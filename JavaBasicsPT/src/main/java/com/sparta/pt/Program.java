@@ -6,16 +6,18 @@ public class Program {
         //refactoring is about improving code, without changing what the code does
         //for tomorrow, when should you and when shouldn't you refactor code
         int timeOfDay = 22; //Value that's held in memory, 3 properties: type, name, value
-        getGreeting(timeOfDay);
+        System.out.println(getGreeting(timeOfDay));
     }
 
-    private static void getGreeting(int timeOfDay) {
+    private static String getGreeting(int timeOfDay) {
+        String greeting;
         if (timeOfDay >= 5 && timeOfDay <= 12) {
-            System.out.println("Good morning!");
+            greeting = "Good morning!";
         } else if (timeOfDay >= 12 && timeOfDay <= 18) {
-            System.out.println("Good afternoon!");
+            greeting = "Good afternoon!";
         } else {
-            System.out.println("Good evening!");
+            greeting = "Good evening!";
         }
+        return greeting;
     }
 }
