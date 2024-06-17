@@ -48,7 +48,7 @@ public class ProgramTest {
     }
 
     @Test
-    @DisplayName("Given the value is greater than 24, Program should output error")
+    @DisplayName("Given the value is greater than 24 or less than 0, Program should output an input error")
     void checkThatGreetingReturnsError(){
         Assertions.assertEquals("Error!", Program.getGreeting(25));
         Assertions.assertEquals("Error!", Program.getGreeting(-1));
