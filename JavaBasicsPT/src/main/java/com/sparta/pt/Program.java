@@ -9,7 +9,7 @@ public class Program {
         System.out.println(getGreeting(timeOfDay));
     }
 
-    private static String getGreeting(int timeOfDay) {
+    public static String getGreeting(int timeOfDay) {
         String greeting;
         if (timeOfDay >= 5 && timeOfDay <= 12) {
             greeting = "Good morning!";
