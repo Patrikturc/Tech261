@@ -12,21 +12,25 @@ public class Program {
 
     public static String getGreeting(int timeOfDay) {
 
-//        String greeting;
-//        if (timeOfDay >= 5 && timeOfDay <= 12) {
+        String greeting;
+
+//        if(timeOfDay < 0 || timeOfDay > 23){
+//            greeting = "Incorrect hour, please insert a number between 0 and 23";
+//        } else if (timeOfDay <= 4) {
+//            greeting = "You should sleep!!!";
+//        } else if (timeOfDay <= 11) {
 //            greeting = "Good morning!";
-//        } else if (timeOfDay >= 12 && timeOfDay <= 18) {
+//        } else if (timeOfDay <= 18) {
 //            greeting = "Good afternoon!";
-//        } else {
-//            greeting = "Good evening!";
-//        }
-//        return greeting;
-        return switch (timeOfDay) {
-            case 5, 6, 7, 8, 9, 10, 11 -> "Good morning!";
-            case 12, 13, 14, 15, 16, 17 -> "Good afternoon!";
-            case 18, 19, 20, 21, 22, 23 -> "Good evening!";
-            case 0, 1, 2, 3, 4 -> "You should sleep!!!";
-            default -> "Incorrect hour, please insert a number between 0 and 23";
-        };
+//        } else greeting = "Good evening!";
+
+
+        greeting = (timeOfDay < 0 || timeOfDay > 23) ? "Incorrect hour, please insert a number between 0 and 23" :
+            (timeOfDay <= 4) ? "You should sleep!!!" :
+            (timeOfDay <= 11) ? "Good morning!" :
+            (timeOfDay <= 18) ? "Good afternoon!" :
+            "Good evening!";
+
+        return greeting;
     }
 }

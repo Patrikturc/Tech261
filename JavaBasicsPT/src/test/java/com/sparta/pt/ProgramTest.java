@@ -22,35 +22,39 @@ public class ProgramTest {
     }
 
     @Test
-    @DisplayName("Given time is between 5 & 12, Then the greeting should be Good morning!")
+    @DisplayName("Given time is between 5 & 12, then the greeting should be Good morning!")
     void checkThatGreetingReturnsGoodMorning(){
-        for( int i = 5; i < 13; i++) {
+        for( int i = 5; i <= 11; i++) {
             Assertions.assertEquals("Good morning!", Program.getGreeting(i));
         }
     }
 
     @Test
-    @DisplayName("Given the time is between 12 and 18, the greeting should be Good afternoon!")
+    @DisplayName("Given the time is between 12 and 18, then the greeting should be Good afternoon!")
     void checkThatGreetingReturnsAfternoon(){
-        for (int i = 12; i < 19; i++) {
+        for (int i = 13; i <= 18; i++) {
             Assertions.assertEquals("Good afternoon!", Program.getGreeting(i));
         }
     }
 
     @Test
-    @DisplayName("Given the time is between 19 and 24, the greeting should be Good evening!")
+    @DisplayName("Given the time is between 19 and 24, then the greeting should be Good evening!")
     void checkThatGreetingReturnsEvening(){
-        for (int i = 0; i < 25; i++){
-            if(i < 5 || i > 18){
-                Assertions.assertEquals("Good evening!", Program.getGreeting(i));
-            }
+        for (int i = 19; i <= 23; i++){
+            Assertions.assertEquals("Good evening!", Program.getGreeting(i));
         }
     }
 
     @Test
-    @DisplayName("Given the value is greater than 24 or less than 0, Program should output an input error")
-    void checkThatGreetingReturnsError(){
-        Assertions.assertEquals("Error!", Program.getGreeting(25));
-        Assertions.assertEquals("Error!", Program.getGreeting(-1));
+    @DisplayName("Given the value is greater than 24, then Program should output an input error")
+    void checkOverBoundaryInput(){
+        Assertions.assertEquals("Incorrect hour, please insert a number between 0 and 23", Program.getGreeting(24));
     }
+
+    @Test
+    @DisplayName("Given the value is less than 0, then Program should output an input error")
+    void checkUnderBoundaryInput(){
+        Assertions.assertEquals("Incorrect hour, please insert a number between 0 and 23", Program.getGreeting(-1));
+    }
+
 }
