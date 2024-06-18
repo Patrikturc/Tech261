@@ -22,6 +22,14 @@ public class ProgramTest {
     }
 
     @Test
+    @DisplayName("Given time is between 0 & 4, then the greeting should be You should sleep!!!")
+    void checkThatGreetingReturnsYouShouldSleep(){
+        for( int i = 0; i <= 4; i++) {
+            Assertions.assertEquals("You should sleep!!!", Program.getGreeting(i));
+        }
+    }
+
+    @Test
     @DisplayName("Given time is between 5 & 12, then the greeting should be Good morning!")
     void checkThatGreetingReturnsGoodMorning(){
         for( int i = 5; i <= 11; i++) {
@@ -38,7 +46,7 @@ public class ProgramTest {
     }
 
     @Test
-    @DisplayName("Given the time is between 19 and 24, then the greeting should be Good evening!")
+    @DisplayName("Given the time is between 19 and 23, then the greeting should be Good evening!")
     void checkThatGreetingReturnsEvening(){
         for (int i = 19; i <= 23; i++){
             Assertions.assertEquals("Good evening!", Program.getGreeting(i));
@@ -55,6 +63,5 @@ public class ProgramTest {
     @DisplayName("Given the value is less than 0, then Program should output an input error")
     void checkUnderBoundaryInput(){
         Assertions.assertEquals("Incorrect hour, please insert a number between 0 and 23", Program.getGreeting(-1));
-        Assertions.
     }
 }

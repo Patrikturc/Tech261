@@ -8,22 +8,14 @@ public class Program {
         //for tomorrow, when should you and when shouldn't you refactor code
         //Value that's held in memory, 3 properties: type, name, value
 
-        /*while(true){
+        try{
             Scanner sc = new Scanner(System.in);
-
             System.out.println("Please enter the time to phrase your greeting?");
             int timeOfDay = sc.nextInt();
             System.out.println(getGreeting(timeOfDay));
-
-            System.out.println("Enter anything to continue or 'Exit' to exit");
-            String tryAgain = sc.next();
-            tryAgain = tryAgain.toLowerCase();
-            if(tryAgain.equals("exit")) break;
-        }*/
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Please enter the time to phrase your greeting?");
-        int timeOfDay = sc.nextInt();
-        System.out.println(getGreeting(timeOfDay));
+        } catch(Exception error) {
+            System.out.println("Please enter a number between 0 and 23");
+        }
     }
 
     public static String getGreeting(int timeOfDay) {
@@ -39,7 +31,6 @@ public class Program {
 //        } else if (timeOfDay <= 18) {
 //            greeting = "Good afternoon!";
 //        } else greeting = "Good evening!";
-
 
         greeting = (timeOfDay < 0 || timeOfDay > 23) ? "Incorrect hour, please insert a number between 0 and 23" :
             (timeOfDay <= 4) ? "You should sleep!!!" :
