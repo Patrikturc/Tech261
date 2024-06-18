@@ -49,8 +49,8 @@ public class FizzBuzzTests {
 
     @ParameterizedTest
     @CsvSource({"15, FizzBuzz",
-            "45, FizzBuzz",
-            "75, FizzBuzz"})
+            "30, FizzBuzz",
+            "45, FizzBuzz"})
     void givenInputIsDivisibleByThreeOrFiveGetFizzBuzzReturnsFizzBuzz(int input, String expected){
         String actual = FizzBuzz.getFizzBuzzFrom(input);
         Assertions.assertEquals(expected, actual);

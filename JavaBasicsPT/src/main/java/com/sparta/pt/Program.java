@@ -22,21 +22,21 @@ public class Program {
 
         String greeting;
         final int morning = 4;
-//        if(timeOfDay < 0 || timeOfDay > 23){
-//            greeting = "Incorrect hour, please insert a number between 0 and 23";
-//        } else if (timeOfDay <= 4) {
-//            greeting = "You should sleep!!!";
-//        } else if (timeOfDay <= 11) {
-//            greeting = "Good morning!";
-//        } else if (timeOfDay <= 18) {
-//            greeting = "Good afternoon!";
-//        } else greeting = "Good evening!";
+        if(timeOfDay < 0 || timeOfDay > 23){
+            greeting = "Incorrect hour, please insert a number between 0 and 23";
+        } else if (timeOfDay <= 4) {
+            greeting = "You should sleep!!!";
+        } else if (timeOfDay <= 11) {
+            greeting = "Good morning!";
+        } else if (timeOfDay <= 18) {
+            greeting = "Good afternoon!";
+        } else greeting = "Good evening!";
 
-        greeting = (timeOfDay < 0 || timeOfDay > 23) ? "Incorrect hour, please insert a number between 0 and 23" :
-            (timeOfDay <= 4) ? "You should sleep!!!" :
-            (timeOfDay <= 11) ? "Good morning!" :
-            (timeOfDay <= 18) ? "Good afternoon!" :
-            "Good evening!";
+//        greeting = (timeOfDay < 0 || timeOfDay > 23) ? "Incorrect hour, please insert a number between 0 and 23" :
+//            (timeOfDay <= 4) ? "You should sleep!!!" :
+//            (timeOfDay <= 11) ? "Good morning!" :
+//            (timeOfDay <= 18) ? "Good afternoon!" :
+//            "Good evening!";
 
         return greeting;
     }
