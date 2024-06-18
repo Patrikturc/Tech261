@@ -31,10 +31,28 @@ public class FizzBuzzTests {
     @ParameterizedTest
     @CsvSource({"2, 2",
             "4, 4",
-            "7,7"})
+            "7, 7"})
     void givenInputNotDivisibleByThreeOrFiveGetFizzBuzzReturnsThatNumber(int input, String expected){
         String actual = FizzBuzz.getFizzBuzzFrom(input);
 
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @ParameterizedTest
+    @CsvSource({"5, Buzz",
+            "10, Buzz",
+            "25, Buzz"})
+    void givenInputIsDivisibleByFiveGetFizzBuzzReturnsBuzz(int input, String expected){
+        String actual = FizzBuzz.getFizzBuzzFrom(input);
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @ParameterizedTest
+    @CsvSource({"15, FizzBuzz",
+            "45, FizzBuzz",
+            "75, FizzBuzz"})
+    void givenInputIsDivisibleByThreeOrFiveGetFizzBuzzReturnsFizzBuzz(int input, String expected){
+        String actual = FizzBuzz.getFizzBuzzFrom(input);
         Assertions.assertEquals(expected, actual);
     }
 
