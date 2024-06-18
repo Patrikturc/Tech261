@@ -1,12 +1,28 @@
 package com.sparta.pt;
+import java.util.Scanner;
 
 public class Program {
     public static void main(String[] args) { //entry point
         //statically typed language means that I can't assign different type to a certain type
         //refactoring is about improving code, without changing what the code does
         //for tomorrow, when should you and when shouldn't you refactor code
-        int timeOfDay = 25; //Value that's held in memory, 3 properties: type, name, value
-        //String[] greetingsList = {"Good morning!", "Good afternoon!", "Good evening!"};
+        //Value that's held in memory, 3 properties: type, name, value
+
+        /*while(true){
+            Scanner sc = new Scanner(System.in);
+
+            System.out.println("Please enter the time to phrase your greeting?");
+            int timeOfDay = sc.nextInt();
+            System.out.println(getGreeting(timeOfDay));
+
+            System.out.println("Enter anything to continue or 'Exit' to exit");
+            String tryAgain = sc.next();
+            tryAgain = tryAgain.toLowerCase();
+            if(tryAgain.equals("exit")) break;
+        }*/
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Please enter the time to phrase your greeting?");
+        int timeOfDay = sc.nextInt();
         System.out.println(getGreeting(timeOfDay));
     }
 

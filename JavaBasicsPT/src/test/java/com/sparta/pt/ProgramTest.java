@@ -55,6 +55,6 @@ public class ProgramTest {
     @DisplayName("Given the value is less than 0, then Program should output an input error")
     void checkUnderBoundaryInput(){
         Assertions.assertEquals("Incorrect hour, please insert a number between 0 and 23", Program.getGreeting(-1));
+        Assertions.
     }
-
 }
