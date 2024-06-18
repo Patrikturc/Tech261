@@ -3,6 +3,8 @@ package com.sparta.pt;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 public class ProgramTest {
 //    @Test //@annotations carries metadata. Passes this to JVM(Java virtual machine)
@@ -21,7 +23,8 @@ public class ProgramTest {
         Assertions.assertEquals("Good evening!", Program.getGreeting(21));
     }
 
-    @Test
+    @ParameterizedTest
+    @CsvSource({"0", "2", "4"})
     @DisplayName("Given time is between 0 & 4, then the greeting should be You should sleep!!!")
     void checkThatGreetingReturnsYouShouldSleep(){
         for( int i = 0; i <= 4; i++) {

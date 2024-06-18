@@ -21,7 +21,7 @@ public class Program {
     public static String getGreeting(int timeOfDay) {
 
         String greeting;
-
+        final int morning = 4;
 //        if(timeOfDay < 0 || timeOfDay > 23){
 //            greeting = "Incorrect hour, please insert a number between 0 and 23";
 //        } else if (timeOfDay <= 4) {
