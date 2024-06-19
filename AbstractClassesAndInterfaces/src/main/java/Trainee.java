@@ -18,6 +18,8 @@ public abstract class Trainee implements Trainable{
         this.projects = projects;
     }
 
+
+
     public String getName() {
         return name;
     }

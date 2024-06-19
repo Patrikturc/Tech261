@@ -5,6 +5,7 @@ public class JavaTrainee extends Trainee{
     private URL github;
 
     public JavaTrainee(String name, int age, String email, String phoneNumber, int experience, String[] certifications, String[] projects) {
+        super(name, age, email, phoneNumber, experience, certifications, projects);
 
     }
 

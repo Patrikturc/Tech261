@@ -14,5 +14,6 @@ public class App {
         Spartan.printSpartan(manish); //static method call
         Spartan.printSpartan(alex);
 
+        System.out.println(manish.equals(alex));
     }
 }
