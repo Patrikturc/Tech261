@@ -9,10 +9,24 @@ public class Cat extends Animal {
 
     @Override
     public void eat() {
-        System.out.println("cat must eat");
+        System.out.println("Cat must eat");
     }
 
     public Cat(String name, String breed, int age) {
         super(name, breed, age);
+    }
+
+    public void climb(){
+        System.out.println("Cat can climb");
+    }
+
+    @Override
+    public void drink() {
+        Drinkable.doSomething();
+    }
+
+    @Override
+    public String goToSleep() {
+        return "";
     }
 }

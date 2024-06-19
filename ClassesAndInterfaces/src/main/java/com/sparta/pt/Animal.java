@@ -1,7 +1,7 @@
 package com.sparta.pt;
 
 //Abstract class deals with state and behaviour
-public abstract class Animal {
+public abstract class Animal implements Drinkable{
     private String name;
     private String breed;
     private int age;
