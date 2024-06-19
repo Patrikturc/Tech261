@@ -39,4 +39,7 @@ public abstract class Animal {
     public void play() {
         System.out.println(name + " wants to play");
     }
+
+    public abstract void eat();
+
 }

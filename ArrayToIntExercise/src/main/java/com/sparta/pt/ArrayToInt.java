@@ -10,9 +10,13 @@ public class ArrayToInt {
         StringBuilder arrayToString = new StringBuilder();
 
         for (int number : intArrToConvert) {
-            arrayToString.append(number);
+            arrayToString.append(getPositiveNumber(number));
         }
         return Integer.parseInt(String.valueOf(arrayToString));
+    }
+
+    private static int getPositiveNumber(int numToCheck){
+        return Math.abs(numToCheck);
     }
 
 }

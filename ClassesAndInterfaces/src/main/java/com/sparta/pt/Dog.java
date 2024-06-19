@@ -6,6 +6,11 @@ public class Dog extends Animal {
         super(name, breed, age);
     }
 
+    @Override
+    public void eat() {
+        System.out.println("Dog must eat");
+    }
+
     //name has to be the same
     //1. Overload based on Return type
     //2. Type of parameters
