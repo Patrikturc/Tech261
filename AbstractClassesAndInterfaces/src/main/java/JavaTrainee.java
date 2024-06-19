@@ -1,11 +1,12 @@
 import java.net.URL;
 
-public class JavaTrainee extends Trainee implements Trainable{
+public class JavaTrainee extends Trainee{
 
-    private int experience;
-    private String[] certifications;
-    private String[] projects;
     private URL github;
+
+    public JavaTrainee(String name, int age, String email, String phoneNumber, int experience, String[] certifications, String[] projects) {
+
+    }
 
     @Override
     public void train() {
