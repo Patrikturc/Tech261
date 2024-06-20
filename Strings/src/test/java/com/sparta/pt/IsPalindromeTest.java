@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 public class IsPalindromeTest {
 
     @Test
-    void GivenInputAbcdeReturnFalse() {
+    void givenInputAbcdeReturnFalse() {
         String input = "abcde";
         boolean expected = false;
 
@@ -16,7 +16,7 @@ public class IsPalindromeTest {
     }
 
     @Test
-    void GivenInputIsRacecarReturnTrue() {
+    void givenInputIsRacecarReturnTrue() {
         String input = "Racecar";
         boolean expected = true;
 
@@ -26,7 +26,7 @@ public class IsPalindromeTest {
     }
 
     @Test
-    void GivenThatInputIsLessThanThreeLettersReturnFalse() {
+    void givenThatInputIsLessThanThreeLettersReturnFalse() {
         String input = "aa";
         boolean expected = false;
 
@@ -36,7 +36,7 @@ public class IsPalindromeTest {
     }
 
     @Test
-    void GivenStringIsEmptyReturnFalse() {
+    void givenStringIsEmptyReturnFalse() {
         String input = "";
         boolean expected = false;
 
@@ -45,4 +45,13 @@ public class IsPalindromeTest {
         Assertions.assertEquals(expected, actual);
     }
 
+    @Test
+    void givenMessyStringGetCleanStringShouldReturnOnlyCharactersFromLatinAlphabet() {
+        String input = "123Hi, this is a Test Method that should only return!!!words and whitespaces!";
+        String expected = "Hi this is a Test Method that should only returnwords and whitespaces";
+
+        String actual = StringCleaner.getCleanString(input);
+
+        Assertions.assertEquals(expected, actual);
+    }
 }

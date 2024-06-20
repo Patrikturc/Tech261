@@ -16,7 +16,7 @@ public class StringExample {
         String name = "Manish";
         System.out.println("Hello " + name);
 
-        new StringBuilder().reverse()
+        //new StringBuilder().reverse();
     }
 
 }
