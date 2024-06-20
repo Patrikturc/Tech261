@@ -44,7 +44,6 @@ public class IdenticalNeighboursTest {
 
         Assertions.assertEquals(expected, actual);
 
-
     }
 
     @ParameterizedTest
