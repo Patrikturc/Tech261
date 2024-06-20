@@ -1,14 +1,34 @@
 package com.sparta.pt;
 
+import java.util.ArrayList;
+
 public class IsPalindrome {
 
-    public static boolean checkIfWordIsPalindrome(String input) {
-        if (input.length() < 3) return false;
-        String inputToLowerCase = input.toLowerCase();
+    private static String[] checkIfWordIsPalindrome(String[] input) {
+        ArrayList<String> palindromeList = new ArrayList<String>();
+        for(String word : input){
+            if (checkIfPalindrome(word)) {
+                palindromeList.add(word);
+            }
+        }
+        return palindromeList.toArray(new String[0]);
+    }
 
-        String reversed = new StringBuffer(inputToLowerCase).reverse().toString();
+    private static boolean checkIfPalindrome(String word) {
+        String reversed = new StringBuilder(word).reverse().toString();
+        return word.equals(reversed);
+    }
 
-        return inputToLowerCase.equals(reversed);
+    public static String[] getLongestPalindromes(String sentence){
+        sentence = StringCleaner.getCleanString(sentence);
+
+        String[] cleanWordsArray = StringCleaner.splitStringToWords(sentence);
+
+        cleanWordsArray = StringCleaner.removeShortWords(cleanWordsArray);
+
+        String[] palindromesArray = checkIfWordIsPalindrome(cleanWordsArray);
+
+        return palindromesArray;
     }
 
     // manual char manipulation
