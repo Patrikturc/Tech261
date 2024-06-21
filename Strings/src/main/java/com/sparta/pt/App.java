@@ -19,5 +19,6 @@ public class App {
         System.out.println(System.identityHashCode(string3));
         System.out.println(System.identityHashCode(string4));
 
+        IsPalindrome isPalindrome = new IsPalindrome(3);
     }
 }
