@@ -5,17 +5,17 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
-public class IsPalindromeTest {
+public class palindromeFinderTest {
 
     private final int minPalindromeLength = 3;
-    private final IsPalindrome isPalindrome = new IsPalindrome(minPalindromeLength);
+    private final palindromeFinder palindromeFinder = new palindromeFinder(minPalindromeLength);
 
     @Test
     void givenInputAbcdeReturnFalse() {
         String input = "abcde";
         boolean expected = false;
 
-        boolean actual = isPalindrome.checkIfPalindrome(input);
+        boolean actual = palindromeFinder.checkIfPalindrome(input);
 
         Assertions.assertEquals(expected, actual);
     }
@@ -25,7 +25,7 @@ public class IsPalindromeTest {
         String input = "racecar";
         boolean expected = true;
 
-        boolean actual = isPalindrome.checkIfPalindrome(input);
+        boolean actual = palindromeFinder.checkIfPalindrome(input);
 
         Assertions.assertEquals(expected, actual);
     }
@@ -35,7 +35,7 @@ public class IsPalindromeTest {
         String input = "knowledge";
         boolean expected = false;
 
-        boolean actual = isPalindrome.checkIfPalindrome(input);
+        boolean actual = palindromeFinder.checkIfPalindrome(input);
 
         Assertions.assertEquals(expected, actual);
     }
@@ -56,7 +56,7 @@ public class IsPalindromeTest {
         String input = "";
         boolean expected = false;
 
-        boolean actual = isPalindrome.checkIfPalindrome(input);
+        boolean actual = palindromeFinder.checkIfPalindrome(input);
 
         Assertions.assertEquals(expected, actual);
     }
@@ -73,11 +73,16 @@ public class IsPalindromeTest {
 
     @Test
     void givenStringSentenceReturnArrayOfStringsWhereEachWordIsOneElement() {
+//        long startTime1 = System.nanoTime();
+
         String input = "Hi this is a Test Method that should only returnwords and whitespaces";
         String[] expected = {"Hi", "this", "is", "a", "Test", "Method", "that", "should", "only", "returnwords", "and", "whitespaces"};
 
         String[] actual = StringProcessor.splitStringToWords(input);
         Assertions.assertEquals(Arrays.toString(expected), Arrays.toString(actual));
+
+//        long endTime1 = System.nanoTime();
+//        System.out.println("NoPalindromes execution time: " + (endTime1 - startTime1) + " ns");
     }
 
     @Test
@@ -95,7 +100,7 @@ public class IsPalindromeTest {
         String input = "123Hi, this is a Test Method that should only return!!!words and whitespaces! Racecar madam rotator Rotator";
         String[] expected = {"racecar", "rotator"};
 
-        String[] actual = isPalindrome.getLongestPalindromes(input);
+        String[] actual = palindromeFinder.getLongestPalindromes(input);
         Assertions.assertEquals(Arrays.toString(expected), Arrays.toString(actual));
     }
 
@@ -108,4 +113,5 @@ public class IsPalindromeTest {
 
         Assertions.assertEquals(expected, actual);
     }
+
 }

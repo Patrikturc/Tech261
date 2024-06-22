@@ -6,7 +6,7 @@ public class StringProcessor{
 
     public static String getLatinAndSpaces(String stringToClean) {
         if(stringToClean.isEmpty()) return "";
-        return stringToClean.replaceAll("[^a-zA-Z ]+", "");
+        return stringToClean.replaceAll("[^a-zA-Z\\s]+", "");
     }
 
     public static String[] splitStringToWords(String stringToSplit) {

@@ -1,6 +1,4 @@
-package com.sparta.pt;
-
-import java.io.PrintStream;
+package com.sparta.pt.animals;
 
 public interface Drinkable extends Sleepable {
 

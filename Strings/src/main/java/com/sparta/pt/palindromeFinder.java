@@ -2,11 +2,11 @@ package com.sparta.pt;
 
 import java.util.ArrayList;
 
-public class IsPalindrome {
+public class palindromeFinder {
 
     private int minLength;
 
-    public IsPalindrome(int minPalindromeLength){
+    public palindromeFinder(int minPalindromeLength){
         minLength = minPalindromeLength;
     }
 
@@ -18,7 +18,7 @@ public class IsPalindrome {
         return StringProcessor.findLongestString(palindromeArray);
     }
 
-    private String[] getPalindromes(String[] input) {
+    public String[] getPalindromes(String[] input) {
         if(input.length == 0) return new String[0];
         ArrayList<String> palindromeList = new ArrayList<>();
         input = StringProcessor.removeShortWords(input, minLength);

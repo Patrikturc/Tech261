@@ -1,4 +1,4 @@
-package com.sparta.pt;
+package com.sparta.pt.animals;
 
 public class Cat extends Animal {
 
