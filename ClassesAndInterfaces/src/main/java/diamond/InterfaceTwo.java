@@ -1,4 +1,4 @@
-package Diamond;
+package diamond;
 
 public interface InterfaceTwo {
     void doSomething();

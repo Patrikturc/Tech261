@@ -1,4 +1,4 @@
-package Diamond;
+package diamond;
 
 public class Implementer implements InterfaceOne, InterfaceTwo{
 
