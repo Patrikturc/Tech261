@@ -2,7 +2,7 @@ package com.sparta.pt.animals;
 
 public interface Drinkable extends Sleepable {
 
-    int max = 10; //fields/vars inheritly public, static and final! in interfaces
+    int max = 10; //fields/vars inherently public, static and final! in interfaces
     //while the program is running that variable cannot change
 
     void drink();

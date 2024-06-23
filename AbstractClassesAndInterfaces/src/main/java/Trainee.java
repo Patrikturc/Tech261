@@ -1,4 +1,4 @@
-public abstract class Trainee implements Trainable{
+public abstract class Trainee implements Trainable, Employable{
 
     private String name;
     private int age;
@@ -75,4 +75,20 @@ public abstract class Trainee implements Trainable{
     public void setProjects(String[] projects) {
         this.projects = projects;
     }
+
+    @Override
+    public void train() {
+
+    }
+
+    @Override
+    public void study() {
+
+    }
+
+    @Override
+    public void practice() {
+        Employable.super.practice();
+    }
+
 }
