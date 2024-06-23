@@ -15,7 +15,7 @@ public class palindromeFinderTest {
         String input = "abcde";
         boolean expected = false;
 
-        boolean actual = palindromeFinder.checkIfPalindrome(input);
+        boolean actual = palindromeFinder.isPalindrome(input);
 
         Assertions.assertEquals(expected, actual);
     }
@@ -25,7 +25,7 @@ public class palindromeFinderTest {
         String input = "racecar";
         boolean expected = true;
 
-        boolean actual = palindromeFinder.checkIfPalindrome(input);
+        boolean actual = palindromeFinder.isPalindrome(input);
 
         Assertions.assertEquals(expected, actual);
     }
@@ -35,7 +35,7 @@ public class palindromeFinderTest {
         String input = "knowledge";
         boolean expected = false;
 
-        boolean actual = palindromeFinder.checkIfPalindrome(input);
+        boolean actual = palindromeFinder.isPalindrome(input);
 
         Assertions.assertEquals(expected, actual);
     }
@@ -46,7 +46,7 @@ public class palindromeFinderTest {
         int minWordLength = 3;
         String[] expected = {"palindrome", "racecar"};
 
-        String[] actual = StringProcessor.removeShortWords(input, minWordLength);
+        String[] actual = StringProcessor.getStringsOfSetLength(input, minWordLength);
 
         Assertions.assertEquals(Arrays.toString(expected), Arrays.toString(actual));
     }
@@ -56,7 +56,7 @@ public class palindromeFinderTest {
         String input = "";
         boolean expected = false;
 
-        boolean actual = palindromeFinder.checkIfPalindrome(input);
+        boolean actual = palindromeFinder.isPalindrome(input);
 
         Assertions.assertEquals(expected, actual);
     }
@@ -78,7 +78,7 @@ public class palindromeFinderTest {
         String input = "Hi this is a Test Method that should only returnwords and whitespaces";
         String[] expected = {"Hi", "this", "is", "a", "Test", "Method", "that", "should", "only", "returnwords", "and", "whitespaces"};
 
-        String[] actual = StringProcessor.splitStringToWords(input);
+        String[] actual = StringProcessor.getStringToWordsArray(input);
         Assertions.assertEquals(Arrays.toString(expected), Arrays.toString(actual));
 
 //        long endTime1 = System.nanoTime();
@@ -90,7 +90,7 @@ public class palindromeFinderTest {
         String[] input = {"Hi", "this", "is", "a", "Test", "Method", "that", "should", "only", "returnwords", "and", "whitespaces"};
         String[] expected = {"this", "Test", "Method", "that", "should", "only", "returnwords", "and", "whitespaces"};
 
-        String[] actual = StringProcessor.removeShortWords(input, 3);
+        String[] actual = StringProcessor.getStringsOfSetLength(input, 3);
 
         Assertions.assertEquals(Arrays.toString(expected), Arrays.toString(actual));
     }

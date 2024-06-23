@@ -9,12 +9,12 @@ public class StringProcessor{
         return stringToClean.replaceAll("[^a-zA-Z\\s]+", "");
     }
 
-    public static String[] splitStringToWords(String stringToSplit) {
+    public static String[] getStringToWordsArray(String stringToSplit) {
         if(stringToSplit.isEmpty()) return new String[0];
         return stringToSplit.split(" ");
     }
 
-    public static String[] removeShortWords(String[] wordsToValidate, int length) {
+    public static String[] getStringsOfSetLength(String[] wordsToValidate, int length) {
         if (wordsToValidate.length == 0) return new String[0];
         ArrayList<String> validLengthWords = new ArrayList<>();
         for (String word : wordsToValidate) {
@@ -23,7 +23,7 @@ public class StringProcessor{
         return validLengthWords.toArray(new String[0]);
     }
 
-    public static String[] findLongestString(String[] words) {
+    public static String[] getLongestString(String[] words) {
         if (words.length == 0) return new String[0];
         ArrayList<String> longestStrings = new ArrayList<>();
         int maxLength = 0;

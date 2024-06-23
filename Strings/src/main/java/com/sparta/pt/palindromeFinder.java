@@ -13,25 +13,25 @@ public class palindromeFinder {
     public String[] getLongestPalindromes(String sentence){
         if(sentence.isEmpty()) return new String[0];
         sentence = StringProcessor.getLatinAndSpaces(sentence).toLowerCase();
-        String[] cleanWordArray = StringProcessor.splitStringToWords(sentence);
+        String[] cleanWordArray = StringProcessor.getStringToWordsArray(sentence);
         String[] palindromeArray = getPalindromes(cleanWordArray);
-        return StringProcessor.findLongestString(palindromeArray);
+        return StringProcessor.getLongestString(palindromeArray);
     }
 
     public String[] getPalindromes(String[] input) {
         if(input.length == 0) return new String[0];
         ArrayList<String> palindromeList = new ArrayList<>();
-        input = StringProcessor.removeShortWords(input, minLength);
+        input = StringProcessor.getStringsOfSetLength(input, minLength);
         for(String word : input){
 
-            if (checkIfPalindrome(word)) {
+            if (isPalindrome(word)) {
                 palindromeList.add(word);
             }
         }
         return palindromeList.toArray(new String[0]);
     }
 
-    public boolean checkIfPalindrome(String word) {
+    public boolean isPalindrome(String word) {
         if (word.isEmpty()) return false;
         String reversed = new StringBuilder(word).reverse().toString();
         return word.equals(reversed);
