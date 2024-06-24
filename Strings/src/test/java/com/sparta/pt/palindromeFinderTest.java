@@ -8,7 +8,7 @@ import java.util.Arrays;
 public class palindromeFinderTest {
 
     private final int minPalindromeLength = 3;
-    private final palindromeFinder palindromeFinder = new palindromeFinder(minPalindromeLength);
+    private final PalindromeFinder palindromeFinder = new PalindromeFinder(minPalindromeLength);
 
     @Test
     void givenInputAbcdeReturnFalse() {

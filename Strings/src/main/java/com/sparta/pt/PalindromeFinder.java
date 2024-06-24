@@ -2,11 +2,11 @@ package com.sparta.pt;
 
 import java.util.ArrayList;
 
-public class palindromeFinder {
+public class PalindromeFinder {
 
     private int minLength;
 
-    public palindromeFinder(int minPalindromeLength){
+    public PalindromeFinder(int minPalindromeLength){
         minLength = minPalindromeLength;
     }
 
