@@ -11,7 +11,7 @@ public class Spartan {
         return name;
     }
 
-    public static void printSpartan(Spartan spartan){
+    public static void printSpartan(Spartan spartan) {
         System.out.println("Name: " + spartan.getName());
     }
 }

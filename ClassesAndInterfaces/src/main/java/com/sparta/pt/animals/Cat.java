@@ -22,11 +22,12 @@ public class Cat extends Animal {
 
     @Override
     public void drink() {
-        Drinkable.doSomething();
+        System.out.println(Drinkable.doSomething());
     }
 
     @Override
     public String goToSleep() {
         return "";
     }
+
 }

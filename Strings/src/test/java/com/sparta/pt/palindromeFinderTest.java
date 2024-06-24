@@ -46,7 +46,7 @@ public class palindromeFinderTest {
         int minWordLength = 3;
         String[] expected = {"palindrome", "racecar"};
 
-        String[] actual = StringProcessor.getStringsOfSetLength(input, minWordLength);
+        String[] actual = StringProcessor.getStringAboveSetLength(input, minWordLength);
 
         Assertions.assertEquals(Arrays.toString(expected), Arrays.toString(actual));
     }
@@ -90,7 +90,7 @@ public class palindromeFinderTest {
         String[] input = {"Hi", "this", "is", "a", "Test", "Method", "that", "should", "only", "returnwords", "and", "whitespaces"};
         String[] expected = {"this", "Test", "Method", "that", "should", "only", "returnwords", "and", "whitespaces"};
 
-        String[] actual = StringProcessor.getStringsOfSetLength(input, 3);
+        String[] actual = StringProcessor.getStringAboveSetLength(input, 3);
 
         Assertions.assertEquals(Arrays.toString(expected), Arrays.toString(actual));
     }

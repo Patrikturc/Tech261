@@ -15,8 +15,8 @@ public interface Drinkable extends Sleepable {
         System.out.println("I am printing from interface!");
     }
 
-    public static void doSomething() {
-        System.out.println("Static method");
+    static String doSomething() {
+        return "Static method";
     }
 
     //public, private, default, protected, ?sealed?

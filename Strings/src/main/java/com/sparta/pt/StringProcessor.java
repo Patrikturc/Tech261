@@ -6,7 +6,7 @@ public class StringProcessor{
 
     public static String getLatinAndSpaces(String stringToClean) {
         if(stringToClean.isEmpty()) return "";
-        return stringToClean.replaceAll("[^a-zA-Z\\s]+", "");
+        return stringToClean.replaceAll("[^a-zA-Z ]+", "");
     }
 
     public static String[] getStringToWordsArray(String stringToSplit) {
@@ -14,7 +14,7 @@ public class StringProcessor{
         return stringToSplit.split(" ");
     }
 
-    public static String[] getStringsOfSetLength(String[] wordsToValidate, int length) {
+    public static String[] getStringAboveSetLength(String[] wordsToValidate, int length) {
         if (wordsToValidate.length == 0) return new String[0];
         ArrayList<String> validLengthWords = new ArrayList<>();
         for (String word : wordsToValidate) {

@@ -21,7 +21,7 @@ public class palindromeFinder {
     public String[] getPalindromes(String[] input) {
         if(input.length == 0) return new String[0];
         ArrayList<String> palindromeList = new ArrayList<>();
-        input = StringProcessor.getStringsOfSetLength(input, minLength);
+        input = StringProcessor.getStringAboveSetLength(input, minLength);
         for(String word : input){
 
             if (isPalindrome(word)) {
