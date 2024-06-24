@@ -5,41 +5,38 @@ import java.util.ArrayList;
 public class StringProcessor{
 
     public static String getLatinAndSpaces(String stringToClean) {
-        if(stringToClean.isEmpty()) return "";
+        if (stringToClean == null || stringToClean.isEmpty()) return "";
         return stringToClean.replaceAll("[^a-zA-Z ]+", "");
     }
 
-    public static String[] getStringToWordsArray(String stringToSplit) {
-        if(stringToSplit.isEmpty()) return new String[0];
+    public static String[] getArrayFromString(String stringToSplit) {
+        if (stringToSplit == null || stringToSplit.isEmpty()) return new String[0];
         return stringToSplit.split(" ");
     }
 
-    public static String[] getStringAboveSetLength(String[] wordsToValidate, int length) {
-        if (wordsToValidate.length == 0) return new String[0];
+    public static String[] getStringsAboveSetLength(String[] wordArray, int length) {
+        if (wordArray == null || wordArray.length == 0) return new String[0];
         ArrayList<String> validLengthWords = new ArrayList<>();
-        for (String word : wordsToValidate) {
-            if(word.length() >= length) validLengthWords.add(word);
+        for (String currentWord : wordArray) {
+            if (currentWord.length() >= length) validLengthWords.add(currentWord);
         }
         return validLengthWords.toArray(new String[0]);
     }
 
-    public static String[] getLongestString(String[] words) {
-        if (words.length == 0) return new String[0];
+    public static String[] getLongestStrings(String[] wordArray) {
+        if (wordArray == null || wordArray.length == 0) return new String[0];
         ArrayList<String> longestStrings = new ArrayList<>();
-        int maxLength = 0;
-
-        for (String longestString : words) {
-            int length = longestString.length();
-            if (length > maxLength) {
-                maxLength = length;
+        int longest = 0;
+        for (String currentWord : wordArray) {
+            int length = currentWord.length();
+            if (length > longest) {
+                longest = length;
                 longestStrings.clear();
-                longestStrings.add(longestString);
-            } else if (length == maxLength && !longestStrings.contains(longestString)) {
-                longestStrings.add(longestString);
+                longestStrings.add(currentWord);
+            } else if (length == longest && !longestStrings.contains(currentWord)) {
+                longestStrings.add(currentWord);
             }
         }
         return longestStrings.toArray(new String[0]);
     }
-
-
 }
