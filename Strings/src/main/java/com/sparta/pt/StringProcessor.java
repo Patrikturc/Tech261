@@ -14,11 +14,11 @@ public class StringProcessor{
         return stringToSplit.split(" ");
     }
 
-    public static String[] getStringsAboveSetLength(String[] wordArray, int length) {
+    public static String[] getStringsAboveSetLength(String[] wordArray, int minLength) {
         if (wordArray == null || wordArray.length == 0) return new String[0];
         ArrayList<String> validLengthWords = new ArrayList<>();
         for (String currentWord : wordArray) {
-            if (currentWord.length() >= length) validLengthWords.add(currentWord);
+            if (currentWord.length() >= minLength) validLengthWords.add(currentWord);
         }
         return validLengthWords.toArray(new String[0]);
     }

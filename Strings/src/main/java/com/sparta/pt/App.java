@@ -6,7 +6,11 @@ public class App {
 
         String[] longestPalindromes = palindromeFinder.getLongestPalindromes("Anna and Otto went to the civic center to see a Kayak display.");
 
-        for (String palindromes : longestPalindromes){
+        printPalindromes(longestPalindromes);
+    }
+
+    private static void printPalindromes(String[] palindromesArray){
+        for (String palindromes : palindromesArray){
             System.out.println(palindromes);
         }
     }

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class BadPalindromeExample {
 
     public static void main(String[] args) {
-        //Passing the sentence to solve
+        //Create the sentence to solve
         String sentence = "Anna and Otto went to the civic center to see a Kayak display.";
 
         //Initialising all data
