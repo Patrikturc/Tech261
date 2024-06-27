@@ -1,21 +1,23 @@
 package com.sparta.pt;
 
 public enum VanillaWowRaces {
-    HUMAN("Human", "Alliance"),
-    DWARF("Dwarf", "Alliance"),
-    NIGHT_ELF("Night Elf", "Alliance"),
-    GNOME("Gnome", "Alliance"),
-    ORC("Orc", "Horde"),
-    UNDEAD("Undead", "Horde"),
-    TAUREN("Tauren", "Horde"),
-    TROLL("Troll", "Horde");
+    HUMAN("Human", "Alliance", "Diplomacy"), //It could store what classes they can play
+    DWARF("Dwarf", "Alliance", "Stoneform"),
+    NIGHT_ELF("Night Elf", "Alliance", "Shadowmeld"),
+    GNOME("Gnome", "Alliance", "Escape Artist"),
+    ORC("Orc", "Horde", "Blood Fury"),
+    UNDEAD("Undead", "Horde", "Will of the Forsaken"),
+    TAUREN("Tauren", "Horde", "War Stomp"),
+    TROLL("Troll", "Horde", "Berserking");
 
     private final String raceName;
     private final String faction;
+    private final String racialAbility;
 
-    VanillaWowRaces(String raceName, String faction) {
+    VanillaWowRaces(String raceName, String faction, String racialAbility1) {
         this.raceName = raceName;
         this.faction = faction;
+        this.racialAbility = racialAbility1;
     }
 
     public String getRaceName() {
@@ -31,35 +33,7 @@ public enum VanillaWowRaces {
     }
 
     public void useRacialAbility() {
-        switch (this) {
-            case HUMAN:
-                System.out.println("Display Diplomacy racial ability.");
-                break;
-            case DWARF:
-                System.out.println("Cast Stoneform racial ability.");
-                break;
-            case NIGHT_ELF:
-                System.out.println("Cast Shadowmeld racial ability.");
-                break;
-            case GNOME:
-                System.out.println("Cast Escape Artist racial ability.");
-                break;
-            case ORC:
-                System.out.println("Cast Blood Fury racial ability.");
-                break;
-            case UNDEAD:
-                System.out.println("Cast Will of the Forsaken racial ability.");
-                break;
-            case TAUREN:
-                System.out.println("Cast War Stomp racial ability.");
-                break;
-            case TROLL:
-                System.out.println("Cast Berserking racial ability.");
-                break;
-            default:
-                System.out.println("Unknown racial ability.");
-                break;
-        }
+        System.out.println(raceName + " uses " + racialAbility + "!");
     }
 
     @Override

@@ -5,7 +5,6 @@ public class App {
         VanillaWowRaces human = VanillaWowRaces.HUMAN;
         human.printRaceDetails();
         human.useRacialAbility();
-        System.out.println(human + "\n\n");
 
         VanillaWowRaces undead = VanillaWowRaces.UNDEAD;
         undead.useRacialAbility();
