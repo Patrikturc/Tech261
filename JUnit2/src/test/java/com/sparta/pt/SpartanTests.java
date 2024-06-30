@@ -45,8 +45,8 @@ public class SpartanTests {
     //Hooks -
     //BeforeAll, - Once before all tests -static
     //BeforeEach, - before each test
-    //AfterAll, - once after all tests -static
     //AfterEach - once after each test
+    //AfterAll, - once after all tests -static
 
     private static Spartan manish;
 

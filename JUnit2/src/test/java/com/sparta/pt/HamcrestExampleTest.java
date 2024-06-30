@@ -11,10 +11,14 @@ import static org.hamcrest.Matchers.*;
 
 public class HamcrestExampleTest {
     private Spartan manish;
+    private Spartan liam;
+    private Spartan josh;
 
     @BeforeEach
     void setup() {
         manish = new Spartan(1, "Manish", "Java", LocalDate.of(2000,1,1));
+        liam = new Spartan(20000, "Liam", "Cyber-Security", LocalDate.of(2030,1,1));
+        josh = new Spartan(300, "Josh", "Suspicious Theories", LocalDate.of(2000,1,1));
     }
 
     @Nested
@@ -24,13 +28,15 @@ public class HamcrestExampleTest {
         @DisplayName("Check that spartan is called Manish")
         void checkThatSpartanIsCalledManish() {
             assertThat(manish.getName(), equalTo("Manish"));
+            assertThat(liam.getName(), equalTo("Liam"));
         }
 
         @Test
         @DisplayName("CheckThatSpartanHasAFieldName")
         void checkThatSpartanHasAFieldName() {
             //makes sure that certain property exists
-            assertThat(manish, hasProperty("nam"));
+            assertThat(manish, hasProperty("name"));
+            assertThat(liam, hasProperty("course"));
         }
         @Test
         @DisplayName("Check that Spartan has a field called course set to Java")
@@ -38,6 +44,19 @@ public class HamcrestExampleTest {
             //makes sure that certain property exists
             assertThat(manish, hasProperty("course", equalTo("Java")));
         }
+        @Test
+        void checkThatIdIsGreaterThan10(){
+            assertThat(liam.getId(), is(greaterThan(10)));
+        }
+        @Test
+        void checkThatEmployeeStartsInTheFuture(){
+            assertThat(liam.getStartDate(), is(greaterThan(LocalDate.now())));
+        }
+        @Test
+        void testCourseIsOneOfValid(){
+            assertThat(liam.getCourse(), oneOf(""));
+        }
+
     }
 
     @Nested
