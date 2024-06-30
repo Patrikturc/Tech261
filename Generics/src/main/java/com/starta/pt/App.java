@@ -14,5 +14,12 @@ public class App {
         System.out.printf("Object Integer Rectangle Area %d\n", integerGenericRectangle1.getWidth()*integerGenericRectangle1.getHeight());
         System.out.printf("Object Integer Rectangle Area %f\n", integerGenericRectangle2.getWidth()*integerGenericRectangle2.getHeight());
 
+        GenericRectangle<? extends Number> integerGenericRectangle3 = new GenericRectangle<>(2.2, 5.5);
+
+        System.out.printf("Object Integer Rectangle Area %f\n", integerGenericRectangle3.getWidth()*integerGenericRectangle3.getHeight());
+        //I can use ? as a wild card type but once we pass something in it will become final
+        //We can write ? and follow it with extends or super <? extends Number> that will allow all types of number and it's children(Double, Integer etc)
+        //We can write ? and follow it with super <? super Number> super will mean this class and any of it's parents)
+        //
     }
 }

@@ -1,5 +1,10 @@
 package com.starta.pt;
 
+
+//T refers to type
+//V - Value
+//K, V = Key, Value
+//E = Element
 public class GenericRectangle<T> {
     private T width;
     private T height;
@@ -23,5 +28,9 @@ public class GenericRectangle<T> {
 
     public void setHeight(T height) {
         this.height = height;
+    }
+
+    public static <V> void printToConsole(V value){
+        System.out.println("Rectangle area: " + value);
     }
 }
