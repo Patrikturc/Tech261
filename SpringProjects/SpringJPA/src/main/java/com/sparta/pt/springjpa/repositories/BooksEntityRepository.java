@@ -14,4 +14,9 @@ public interface BooksEntityRepository extends JpaRepository<BooksEntity, Intege
     @Query("delete from BooksEntity b where upper(b.title) = upper(?1)")
     void deleteByTitle(String title);
 
+    @Transactional
+    @Modifying
+    @Query("update BooksEntity b set b.title = ?1 where b.id = ?2")
+    void updateByTitle(String title, Integer id);
+
 }

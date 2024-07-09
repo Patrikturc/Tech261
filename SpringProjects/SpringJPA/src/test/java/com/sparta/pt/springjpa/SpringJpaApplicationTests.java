@@ -68,7 +68,7 @@ class SpringJpaApplicationTests {
     void checkThatCreateBookWorks() {
         AuthorEntity author = authorRepository.findById(19).orElse(null);
         booksEntityRepository.save(new BooksEntity("CRUD Stuff", author));
-        assertNotNull(booksEntityRepository.existsByTitle("CRUD Stuff"), "Book should be found");
+        assertTrue(booksEntityRepository.existsByTitle("CRUD Stuff"), "Book should be found");
     }
 
     @Test
@@ -81,5 +81,12 @@ class SpringJpaApplicationTests {
     void checkThatDeleteBookByTitleWorks() {
         booksEntityRepository.deleteByTitle("CRUD Stuff");
         assertFalse(booksEntityRepository.existsByTitle("CRUD Stuff"), "Book should not be found");
+    }
+
+    @Test
+    void checkThatUpdateBookTittleWorks() {
+        boolean exists = true;
+        booksEntityRepository.updateByTitle("Coding With Java and Spring!", 2);
+        assertEquals(exists, booksEntityRepository.existsByTitle("Coding With Java and Spring!"), "Coding With Java and Spring! should be found");
     }
 }
