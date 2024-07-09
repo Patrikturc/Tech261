@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -51,15 +52,22 @@ class SpringJpaApplicationTests {
         authorRepository.updateFullName("Josh", 21);
         assertEquals(exists, authorRepository.existsByFullName("Josh"), "Josh should be found");
     }
-    //    @Test
-//    void checkThatICanSeeAllBooks() {
-//        // Act
-//        List<BooksEntity> books = booksEntityRepository.findAll();
-//
-//        // Assert
-//        assertEquals(3, books.size(), "There should be 3 books in the database");
-//        assertTrue(books.stream().anyMatch(book -> book.getTitle().equals("Book Title 1")));
-//        assertTrue(books.stream().anyMatch(book -> book.getTitle().equals("Book Title 2")));
-//        assertTrue(books.stream().anyMatch(book -> book.getTitle().equals("Book Title 3")));
-//    }
+
+    @Test
+    void checkThatICanSeeAllBooks() {
+        // Act
+        List<BooksEntity> books = booksEntityRepository.findAll();
+
+        // Assert
+        assertEquals(2, books.size(), "There should be 2 books in the database");
+        assertTrue(books.stream().anyMatch(book -> book.getTitle().equals("Coding With Java")));
+        assertTrue(books.stream().anyMatch(book -> book.getTitle().equals("Coding With Spring")));
+    }
+
+    @Test
+    void checkThatCreateBookWorks() {
+        AuthorEntity author = authorRepository.findById(19).orElse(null);
+        booksEntityRepository.save(new BooksEntity("CRUD Stuff", author));
+        assertNotNull(authorRepository.findByFullName("CRUD Stuff"), "Author should be found");
+    }
 }

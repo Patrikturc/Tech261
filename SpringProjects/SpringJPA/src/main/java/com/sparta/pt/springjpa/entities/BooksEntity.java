@@ -19,6 +19,11 @@ public class BooksEntity {
     @JoinColumn(name = "author_id")
     private AuthorEntity author;
 
+    public BooksEntity(String title, AuthorEntity author) {
+        this.title = title;
+        this.author = author;
+    }
+
     public Integer getId() {
         return id;
     }
