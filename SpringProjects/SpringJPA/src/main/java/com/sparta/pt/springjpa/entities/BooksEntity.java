@@ -19,6 +19,8 @@ public class BooksEntity {
     @JoinColumn(name = "author_id")
     private AuthorEntity author;
 
+    public BooksEntity() {}
+
     public BooksEntity(String title, AuthorEntity author) {
         this.title = title;
         this.author = author;
@@ -48,4 +50,12 @@ public class BooksEntity {
         this.author = author;
     }
 
+    @Override
+    public String toString() {
+        return "BooksEntity{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", author=" + author +
+                '}';
+    }
 }

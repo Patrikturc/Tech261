@@ -34,10 +34,10 @@ public class SpringJpaApplication {
 //        logger.info(String.valueOf(repository.existsByFullName("Fred")));
 //        logger.info(repository.findById(21).orElseThrow().toString());
         return args -> {
-            //repository.deleteByFullName("Fred");
-            //logger.info(repository.findAll().toString());
-            logger.info(String.valueOf(repository.existsByFullName("Fred")));
-            logger.info(repository.findById(21).orElseThrow().toString());
+//            repository.deleteByFullName("Fred");
+//            logger.info(repository.findAll().toString());
+//            logger.info(String.valueOf(repository.existsByFullName("Fred")));
+//            logger.info(repository.findById(21).orElseThrow().toString());
         };
     }
 }

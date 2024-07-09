@@ -4,9 +4,14 @@ import com.sparta.pt.springjpa.entities.BooksEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+@Repository
 public interface BooksEntityRepository extends JpaRepository<BooksEntity, Integer> {
+
+    Iterable<BooksEntity> findByTitle(String title);
+
     boolean existsByTitle(String title);
 
     @Transactional

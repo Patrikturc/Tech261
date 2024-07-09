@@ -4,13 +4,10 @@ import com.sparta.pt.springjpa.entities.AuthorEntity;
 import com.sparta.pt.springjpa.entities.BooksEntity;
 import com.sparta.pt.springjpa.repositories.AuthorRepository;
 import com.sparta.pt.springjpa.repositories.BooksEntityRepository;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
 import java.util.List;
-import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -25,7 +22,7 @@ class SpringJpaApplicationTests {
     @Test
     void checkThatICanSeeAllAuthors() {
         List<AuthorEntity> author = authorRepository.findAll();
-        assertEquals(2, author.size(), "There should be 2 authors");
+        assertEquals(3, author.size(), "There should be 3 authors");
     }
 
     @Test
@@ -55,12 +52,9 @@ class SpringJpaApplicationTests {
 
     @Test
     void checkThatICanSeeAllBooks() {
-        // Act
         List<BooksEntity> books = booksEntityRepository.findAll();
-
-        // Assert
-        assertEquals(2, books.size(), "There should be 2 books in the database");
-        assertTrue(books.stream().anyMatch(book -> book.getTitle().equals("Coding With Java")));
+        assertEquals(3, books.size(), "There should be 3 books in the database");
+        assertTrue(books.stream().anyMatch(book -> book.getTitle().equals("Coding With Java and Spring!")));
         assertTrue(books.stream().anyMatch(book -> book.getTitle().equals("Coding With Spring")));
     }
 
@@ -74,7 +68,7 @@ class SpringJpaApplicationTests {
     @Test
     void checkThatSearchingBooksByTitleWorks() {
         boolean exists = true;
-        assertEquals(exists, booksEntityRepository.existsByTitle("Coding With Java"), "Book should be found");
+        assertEquals(exists, booksEntityRepository.existsByTitle("Coding With Spring"), "Book should be found");
     }
 
     @Test
