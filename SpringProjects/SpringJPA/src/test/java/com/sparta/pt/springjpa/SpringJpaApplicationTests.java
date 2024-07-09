@@ -70,4 +70,10 @@ class SpringJpaApplicationTests {
         booksEntityRepository.save(new BooksEntity("CRUD Stuff", author));
         assertNotNull(authorRepository.findByFullName("CRUD Stuff"), "Author should be found");
     }
+
+    @Test
+    void checkThatSearchingBooksByTitleWorks() {
+        boolean exists = true;
+        assertEquals(exists, booksEntityRepository.existsByTitle("Coding With Java"), "Book should be found");
+    }
 }
