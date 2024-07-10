@@ -2,7 +2,6 @@ package com.sparta.pt.springjpa;
 
 import com.sparta.pt.springjpa.entities.AuthorEntity;
 import com.sparta.pt.springjpa.repositories.AuthorRepository;
-import com.sparta.pt.springjpa.services.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -25,12 +24,12 @@ public class SpringJpaApplication {
     public CommandLineRunner runner(AuthorRepository repository) {
 
 //        Create, read, update, delete
-//        CREATE METHODS
+//        CREATE
 //        repository.save(new AuthorEntity().setFullName("Fred"));
-//        DELETE METHODS
+//        DELETE
 //        repository.deleteById(3);
 //        repository.deleteAll(repository.findByFullName("Bob"));
-//        READ METHODS
+//        READ
 //        logger.info(String.valueOf(repository.existsByFullName("Fred")));
 //        logger.info(repository.findById(21).orElseThrow().toString());
         return args -> {

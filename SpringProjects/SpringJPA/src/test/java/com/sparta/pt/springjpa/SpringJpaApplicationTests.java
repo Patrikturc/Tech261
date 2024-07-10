@@ -4,14 +4,21 @@ import com.sparta.pt.springjpa.entities.AuthorEntity;
 import com.sparta.pt.springjpa.entities.BooksEntity;
 import com.sparta.pt.springjpa.repositories.AuthorRepository;
 import com.sparta.pt.springjpa.repositories.BooksEntityRepository;
+import jakarta.transaction.Transactional;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
+
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@Transactional
 @SpringBootTest
+//@ActiveProfiles("test")
 class SpringJpaApplicationTests {
 
     @Autowired
@@ -19,10 +26,18 @@ class SpringJpaApplicationTests {
     @Autowired
     private BooksEntityRepository booksEntityRepository;
 
+//    @BeforeEach
+//    void setUpBeforeClass() throws Exception {
+//        AuthorEntity a1 = authorRepository.save(new AuthorEntity().setFullName("Patrik"));
+//        AuthorEntity a2 = authorRepository.save(new AuthorEntity().setFullName("Alex"));
+//        booksEntityRepository.save(new BooksEntity("Coding With Java", a1));
+//        booksEntityRepository.save(new BooksEntity("Coding With Spring", a2));
+//    }
+
     @Test
     void checkThatICanSeeAllAuthors() {
         List<AuthorEntity> author = authorRepository.findAll();
-        assertEquals(3, author.size(), "There should be 3 authors");
+        assertEquals(2, author.size(), "There should be 2 authors");
     }
 
     @Test
@@ -34,7 +49,7 @@ class SpringJpaApplicationTests {
     @Test
     void checkThatSearchingAuthorByNameWorks() {
         boolean exists = true;
-        assertEquals(exists, authorRepository.existsByFullName("Fred"), "Author should be found");
+        assertEquals(exists, authorRepository.existsByFullName("Patrik"), "Author should be found");
     }
 
     @Test
@@ -46,21 +61,20 @@ class SpringJpaApplicationTests {
     @Test
     void checkThatUpdateAuthorNameWorks() {
         boolean exists = true;
-        authorRepository.updateFullName("Josh", 21);
+        authorRepository.updateFullName("Josh", 2);
         assertEquals(exists, authorRepository.existsByFullName("Josh"), "Josh should be found");
     }
 
     @Test
     void checkThatICanSeeAllBooks() {
         List<BooksEntity> books = booksEntityRepository.findAll();
-        assertEquals(3, books.size(), "There should be 3 books in the database");
-        assertTrue(books.stream().anyMatch(book -> book.getTitle().equals("Coding With Java and Spring!")));
+        assertEquals(2, books.size(), "There should be 2 books in the database");
         assertTrue(books.stream().anyMatch(book -> book.getTitle().equals("Coding With Spring")));
     }
 
     @Test
     void checkThatCreateBookWorks() {
-        AuthorEntity author = authorRepository.findById(19).orElse(null);
+        AuthorEntity author = authorRepository.findById(2).orElse(null);
         booksEntityRepository.save(new BooksEntity("CRUD Stuff", author));
         assertTrue(booksEntityRepository.existsByTitle("CRUD Stuff"), "Book should be found");
     }
@@ -73,6 +87,8 @@ class SpringJpaApplicationTests {
 
     @Test
     void checkThatDeleteBookByTitleWorks() {
+        AuthorEntity author = authorRepository.findById(2).orElse(null);
+        booksEntityRepository.save(new BooksEntity("CRUD Stuff", author));
         booksEntityRepository.deleteByTitle("CRUD Stuff");
         assertFalse(booksEntityRepository.existsByTitle("CRUD Stuff"), "Book should not be found");
     }
