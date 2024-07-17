@@ -1,7 +1,9 @@
 package com.sparta.pt.springrest.controllers;
 
 import com.sparta.pt.springrest.entities.Author;
+import com.sparta.pt.springrest.entities.Book;
 import com.sparta.pt.springrest.repositories.AuthorRepository;
+import com.sparta.pt.springrest.repositories.BookRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.swing.text.html.Option;
 import java.net.URI;
 import java.util.List;
 import java.util.Objects;
@@ -20,9 +23,11 @@ import java.util.Optional;
 public class AuthorController {
 
     private final AuthorRepository authorRepository;
+    private final BookRepository bookRepository;
 
-    public AuthorController(AuthorRepository authorRepository) {
+    public AuthorController(AuthorRepository authorRepository, BookRepository bookRepository) {
         this.authorRepository = authorRepository;
+        this.bookRepository = bookRepository;
     }
 
     @GetMapping()
@@ -62,6 +67,34 @@ public class AuthorController {
             authorRepository.save(author);
             return ResponseEntity.ok(author);
         }
+        return ResponseEntity.noContent().build();
+    }
+
+//    @DeleteMapping("/{id}")
+//    public ResponseEntity<Author> deleteAuthor(@PathVariable Integer id) {
+//        Optional<Author> authorOptional = authorRepository.findById(id);
+//
+//        if (authorOptional.isEmpty()) {
+//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//        }
+//
+//        authorRepository.delete(authorOptional.get());
+//        return ResponseEntity.noContent().build();
+//    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteAuthor(@PathVariable Integer id) {
+        Optional<Author> authorOptional = authorRepository.findById(id);
+
+        if (authorOptional.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        List<Book> books = bookRepository.findByAuthorId(id);
+        bookRepository.deleteAll(books);
+
+        authorRepository.delete(authorOptional.get());
+
         return ResponseEntity.noContent().build();
     }
 }
