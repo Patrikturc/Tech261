@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Author Creation</title>
+</head>
+<body>
+<h1>Create an Author</h1>
+
+<section>
+    <form method="post" th:object="${author}">
+        <fieldset>
+            <legend>Create Author</legend>
+            <p>
+                <label for="fullName">Full Name: </label>
+<!--                <input type="text" id="fullName" name="fullName" required="required">-->
+                <input type="text" th:field="*{fullName}" id="fullName" required="required">
+                <span th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}"></span>
+            </p>
+            <p>
+                <button type="submit">Create</button>
+            </p>
+        </fieldset>
+    </form>
+</section>
+<footer th:replace="~{fragments/footer :: personal}"></footer>
+</body>
+</html>

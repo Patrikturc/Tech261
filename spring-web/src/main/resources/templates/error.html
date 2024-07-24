@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Error Page</title>
+</head>
+<body>
+
+<h1>Oops...That didn't go as expected</h1>
+
+<p>Message:
+    <span th:text="${errorMessage}"></span></p>
+<p>
+    Please try again later or return to the
+    <a th:href="@{/}"}>home</a>
+    page.
+</p>
+
+</body>
+</html>
