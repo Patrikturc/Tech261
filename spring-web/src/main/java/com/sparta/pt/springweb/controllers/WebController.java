@@ -10,10 +10,9 @@ import java.time.format.DateTimeFormatter;
 @Controller
 public class WebController {
 
-    @GetMapping
+    @GetMapping("/")
     public String welcome(Model model){
         model.addAttribute("date", LocalDate.now());
-
         return "welcome";
     }
 }
