@@ -37,4 +37,9 @@ public class CalculatorStepDefs {
     public void theResultShouldBe(int expected) {
         Assertions.assertEquals(expected, actual);
     }
+
+    @When("I press multiply")
+    public void iPressMultiply() {
+        actual = calculator.multiply();
+    }
 }

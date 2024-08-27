@@ -20,4 +20,8 @@ public class Calculator {
     public Integer subtract() {
         return num1 - num2;
     }
+
+    public Integer multiply() {
+        return num1 * num2;
+    }
 }
