@@ -1,4 +1,4 @@
-package com.sparta.pt.cucumber;
+package com.sparta.pt;
 
 import com.sparta.pt.Calculator;
 import com.sparta.pt.DivideByZeroException;

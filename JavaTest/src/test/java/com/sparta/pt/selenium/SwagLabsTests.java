@@ -1,4 +1,4 @@
-package selenium;
+package com.sparta.pt.selenium;
 
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;

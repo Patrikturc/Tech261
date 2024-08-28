@@ -1,4 +1,4 @@
-package selenium;
+package com.sparta.pt.selenium;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
@@ -46,7 +46,7 @@ public abstract class BaseTestConfig {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--start-maximized");
         options.addArguments("--remote-allow-origins=*");
-        options.addArguments("--headless");
+//        options.addArguments("--headless");
         options.setImplicitWaitTimeout(Duration.ofSeconds(3));
         return options;
     }
