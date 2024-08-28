@@ -30,9 +30,36 @@ Feature: Calculator
     Then the result should be <result>
 
     Examples:
-      |input1 |input2  |result  |
-      | 1     | 1      | 1      |
-      | 2     | 3      | 6      |
-      | 9     | 9      | 81     |
-      | 5     | -17    | -85    |
+      | input1 | input2 | result |
+      | 1      | 1      | 1      |
+      | 2      | 3      | 6      |
+      | 9      | 9      | 81     |
+      | 5      | -17    | -85    |
 
+  @HappyPath
+  Scenario: Divide
+    And I enter 6 and 2 into the calculator
+    When I press divide
+    Then the result should be 3
+
+  @SadPath
+  Scenario Outline: Divide By Zero
+    And I enter <input1> and 0 into the calculator
+    When I press divide
+    Then a DivideByZeroException should be thrown
+    And the exception should have the message "Cannot Divide By Zero"
+    Examples:
+      | input1 |
+      | 1      |
+      | 6      |
+
+  @HappyPath
+  Scenario: SumOfNumbersDivisibleBy2
+    And I enter the numbers below to a list
+      | 1    |
+      | 2    |
+      | 3    |
+      | 4    |
+      | 5    |
+    When I iterate through the list to add all the even numbers
+    Then the result should be 6
