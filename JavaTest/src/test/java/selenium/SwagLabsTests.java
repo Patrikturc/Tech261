@@ -17,7 +17,7 @@ import java.time.Duration;
 import java.util.List;
 import java.util.Set;
 
-public class SwagLabsTests extends BaseTest {
+public class SwagLabsTests extends BaseTestConfig {
     private static final String BASE_URL = "https://www.saucedemo.com/";
 
     @Test
@@ -26,15 +26,6 @@ public class SwagLabsTests extends BaseTest {
         webDriver.get(BASE_URL);
         Assertions.assertEquals(BASE_URL, webDriver.getCurrentUrl());
         Assertions.assertEquals("Swag Labs", webDriver.getTitle());
-    }
-
-    @Test
-    @DisplayName("Given that I enter a correct username but invalid password, When I click login, Then I should see an error message containing epic sadface")
-    public void checkErrorMessageWhenInvalidPassword() {
-        webDriver.get(BASE_URL);
-        performLogin("standard_user", "wrong_password");
-        WebElement errorMessage = webDriver.findElement(By.cssSelector("[data-test='error']"));
-        MatcherAssert.assertThat(errorMessage.getText(), Matchers.containsString("Epic sadface"));
     }
 
     @Test
@@ -87,6 +78,15 @@ public class SwagLabsTests extends BaseTest {
                 webDriver.switchTo().window(tab);
             }
         }
+    }
+
+    @Test
+    @DisplayName("Given that I enter a correct username but invalid password, When I click login, Then I should see an error message containing epic sadface")
+    public void checkErrorMessageWhenInvalidPassword() {
+        webDriver.get(BASE_URL);
+        performLogin("standard_user", "wrong_password");
+        WebElement errorMessage = webDriver.findElement(By.cssSelector("[data-test='error']"));
+        MatcherAssert.assertThat(errorMessage.getText(), Matchers.containsString("Epic sadface"));
     }
 
     @Test

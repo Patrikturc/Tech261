@@ -13,7 +13,7 @@ import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
 
-public abstract class BaseTest {
+public abstract class BaseTestConfig {
     protected static final String DRIVER_LOCATION = "src/test/resources/chromedriver.exe";
     protected static ChromeDriverService service;
     protected WebDriver webDriver;

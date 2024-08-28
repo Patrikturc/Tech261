@@ -13,7 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class DemoqaTests extends BaseTest {
+public class DemoqaTests extends BaseTestConfig {
     private static final String BASE_URL = "https://demoqa.com/droppable/";
 
     @Test
