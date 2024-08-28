@@ -46,6 +46,7 @@ public abstract class BaseTest {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--start-maximized");
         options.addArguments("--remote-allow-origins=*");
+        options.addArguments("--headless");
         options.setImplicitWaitTimeout(Duration.ofSeconds(10));
         return options;
     }

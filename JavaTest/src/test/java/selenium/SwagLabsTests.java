@@ -2,19 +2,14 @@ package selenium;
 
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
-import org.junit.After;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriverService;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -37,12 +32,7 @@ public class SwagLabsTests extends BaseTest {
     @DisplayName("Given that I enter a correct username but invalid password, When I click login, Then I should see an error message containing epic sadface")
     public void checkErrorMessageWhenInvalidPassword() {
         webDriver.get(BASE_URL);
-        WebElement usernameField = webDriver.findElement(By.name("user-name"));
-        WebElement passwordField = webDriver.findElement(By.name("password"));
-        WebElement loginButton = webDriver.findElement(By.id("login-button"));
-        usernameField.sendKeys("standard_user");
-        passwordField.sendKeys("wrong_password");
-        loginButton.click();
+        performLogin("standard_user", "wrong_password");
         WebElement errorMessage = webDriver.findElement(By.cssSelector("[data-test='error']"));
         MatcherAssert.assertThat(errorMessage.getText(), Matchers.containsString("Epic sadface"));
     }
@@ -53,12 +43,7 @@ public class SwagLabsTests extends BaseTest {
         Wait<WebDriver> webDriverWait = new WebDriverWait(webDriver, Duration.ofSeconds(10));
 
         webDriver.get(BASE_URL);
-        WebElement usernameField = webDriver.findElement(By.name("user-name"));
-        WebElement passwordField = webDriver.findElement(By.name("password"));
-        WebElement loginButton = webDriver.findElement(By.id("login-button"));
-        usernameField.sendKeys("standard_user");
-        passwordField.sendKeys("secret_sauce");
-        loginButton.click();
+        performLogin("standard_user", "secret_sauce");
         webDriverWait.until(driver -> driver.getCurrentUrl().contains("/inventory"));
 
         MatcherAssert.assertThat(webDriver.getCurrentUrl(), Matchers.is(BASE_URL + "inventory.html"));
@@ -68,12 +53,7 @@ public class SwagLabsTests extends BaseTest {
     @DisplayName("Given I am logged in, when I view the inventory page, I should see the correct number of products")
     public void checkNumberOfProductsOnInventoryPage() throws IOException {
         webDriver.get(BASE_URL);
-        WebElement usernameField = webDriver.findElement(By.name("user-name"));
-        WebElement passwordField = webDriver.findElement(By.name("password"));
-        WebElement loginButton = webDriver.findElement(By.id("login-button"));
-        usernameField.sendKeys("standard_user");
-        passwordField.sendKeys("secret_sauce");
-        loginButton.click();
+        performLogin("standard_user", "secret_sauce");
         List<WebElement> items = webDriver.findElements(By.className("inventory_item"));
         int itemsCount = items.size();
 
@@ -107,5 +87,15 @@ public class SwagLabsTests extends BaseTest {
                 webDriver.switchTo().window(tab);
             }
         }
+    }
+
+    // Private helper method to perform login
+    private void performLogin(String username, String password) {
+        WebElement usernameField = webDriver.findElement(By.name("user-name"));
+        WebElement passwordField = webDriver.findElement(By.name("password"));
+        WebElement loginButton = webDriver.findElement(By.id("login-button"));
+        usernameField.sendKeys(username);
+        passwordField.sendKeys(password);
+        loginButton.click();
     }
 }
