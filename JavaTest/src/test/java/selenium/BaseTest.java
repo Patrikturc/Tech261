@@ -47,7 +47,7 @@ public abstract class BaseTest {
         options.addArguments("--start-maximized");
         options.addArguments("--remote-allow-origins=*");
         options.addArguments("--headless");
-        options.setImplicitWaitTimeout(Duration.ofSeconds(10));
+        options.setImplicitWaitTimeout(Duration.ofSeconds(3));
         return options;
     }
 }

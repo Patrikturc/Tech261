@@ -89,7 +89,45 @@ public class SwagLabsTests extends BaseTest {
         }
     }
 
-    // Private helper method to perform login
+    @Test
+    @DisplayName("Given I am logged in, when I add item to cart, then I should see 1 item in my cart")
+    public void addItemToCart() {
+        webDriver.get(BASE_URL);
+        performLogin("standard_user", "secret_sauce");
+        WebElement addToCartButton = webDriver.findElement(By.id("add-to-cart-sauce-labs-backpack"));
+        addToCartButton.click();
+        WebElement cartBadge = webDriver.findElement(By.className("shopping_cart_badge"));
+        MatcherAssert.assertThat(cartBadge.getText(), Matchers.is("1"));
+    }
+
+    @Test
+    @DisplayName("Given I am logged in, when I add 3 items to card, then I should see 3 items in my cart")
+    public void addMultipleItemsToCart() {
+        webDriver.get(BASE_URL);
+        performLogin("standard_user", "secret_sauce");
+        WebElement addToCartButton = webDriver.findElement(By.id("add-to-cart-sauce-labs-backpack"));
+        addToCartButton.click();
+        addToCartButton = webDriver.findElement(By.id("add-to-cart-sauce-labs-bike-light"));
+        addToCartButton.click();
+        addToCartButton = webDriver.findElement(By.id("add-to-cart-sauce-labs-bolt-t-shirt"));
+        addToCartButton.click();
+        WebElement cartBadge = webDriver.findElement(By.className("shopping_cart_badge"));
+        MatcherAssert.assertThat(cartBadge.getText(), Matchers.is("3"));
+    }
+
+    @Test
+    @DisplayName("Given I am logged in, when I add an item to my cart, and I remove that item from my cart, then my cart should be empty")
+    public void removeItemFromCart() {
+        webDriver.get(BASE_URL);
+        performLogin("standard_user", "secret_sauce");
+        WebElement addToCartButton = webDriver.findElement(By.id("add-to-cart-sauce-labs-backpack"));
+        addToCartButton.click();
+        WebElement removeButton = webDriver.findElement(By.id("remove-sauce-labs-backpack"));
+        removeButton.click();
+        List<WebElement> cartBadges = webDriver.findElements(By.className("shopping_cart_badge"));
+        MatcherAssert.assertThat("Cart should be empty after removing the item", cartBadges.isEmpty(), Matchers.is(true));
+    }
+
     private void performLogin(String username, String password) {
         WebElement usernameField = webDriver.findElement(By.name("user-name"));
         WebElement passwordField = webDriver.findElement(By.name("password"));
