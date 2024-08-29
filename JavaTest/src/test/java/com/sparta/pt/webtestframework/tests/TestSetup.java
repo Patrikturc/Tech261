@@ -18,14 +18,13 @@ public class TestSetup {
     private static final String DRIVER_LOCATION = "src/test/resources/chromedriver.exe";
     private static ChromeDriverService service;
     private WebDriver webDriver;
-    private Website website;
 
     private static ChromeOptions getChromeOptions(){
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--start-maximized");
-        options.addArguments("--headless");
-        options.addArguments("--remote-allow-origins=");
-        options.setImplicitWaitTimeout(Duration.ofSeconds(10));
+        //options.addArguments("--headless");
+        options.addArguments("--remote-allow-origins=*");
+        options.setImplicitWaitTimeout(Duration.ofSeconds(3));
         return options;
     }
 
@@ -39,7 +38,7 @@ public class TestSetup {
     }
 
     @AfterAll
-    static void afterAll(){
+    public static void afterAll(){
         service.stop();
     }
 
@@ -50,10 +49,15 @@ public class TestSetup {
 
     @AfterEach
     public void afterEach(){
-        webDriver.quit();
+        if (webDriver != null) {
+            webDriver.quit();
+        }
     }
 
     public Website getWebsite(String url){
+        if (webDriver == null) {
+            setup();
+        }
         webDriver.get(url);
         return new Website(webDriver);
     }

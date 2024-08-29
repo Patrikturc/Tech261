@@ -3,13 +3,15 @@ package com.sparta.pt.webtestframework.pages;
 import org.openqa.selenium.WebDriver;
 
 public class Website {
-    private WebDriver webDriver;
+    private final WebDriver webDriver;
 
-    private HomePage homePage;
+    private final HomePage homePage;
+    private InventoryPage inventoryPage;
 
     public Website(WebDriver webDriver) {
         this.webDriver = webDriver;
         this.homePage = new HomePage(webDriver);
+        this.inventoryPage = new InventoryPage(webDriver);
     }
 
     public HomePage getHomePage() {
@@ -22,5 +24,9 @@ public class Website {
 
     public String getPageTitle() {
         return webDriver.getTitle();
+    }
+
+    public InventoryPage getInventoryPage() {
+        return inventoryPage;
     }
 }
