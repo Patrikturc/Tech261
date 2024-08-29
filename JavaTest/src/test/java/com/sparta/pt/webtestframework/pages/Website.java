@@ -6,7 +6,7 @@ public class Website {
     private final WebDriver webDriver;
 
     private final HomePage homePage;
-    private InventoryPage inventoryPage;
+    private final InventoryPage inventoryPage;
 
     public Website(WebDriver webDriver) {
         this.webDriver = webDriver;
