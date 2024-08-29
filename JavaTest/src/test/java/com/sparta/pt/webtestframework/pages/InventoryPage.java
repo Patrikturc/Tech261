@@ -11,8 +11,6 @@ public class InventoryPage {
     private final WebDriver webDriver;
     private final By inventoryItems = By.className("inventory_item");
     private final By shoppingCartBadge = By.className("shopping_cart_badge");
-    private final By numberOfItemsOnPage = By.className("inventory_item_name");
-    private final By itemsInCart = By.className("shopping_cart_badge");
     private final By addToCartButton = By.className("btn_primary");
 
     public InventoryPage(WebDriver webDriver) {
@@ -28,7 +26,7 @@ public class InventoryPage {
     }
 
     public Integer getCartCount() {
-        return Integer.parseInt(webDriver.findElement(itemsInCart).getText());
+        return Integer.parseInt(webDriver.findElement(shoppingCartBadge).getText());
     }
 
     public void addItemToCart() {

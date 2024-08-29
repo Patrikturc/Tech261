@@ -15,8 +15,7 @@ public class SwagLabsTests extends TestSetup {
     private InventoryPage inventoryPage;
 
     @BeforeEach
-    public void setup() {
-        super.setup();
+    public void setupPages() {
         website = getWebsite(BASE_URL);
         homePage = website.getHomePage();
     }
