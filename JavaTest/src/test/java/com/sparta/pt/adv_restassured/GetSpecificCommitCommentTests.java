@@ -1,37 +1,52 @@
 package com.sparta.pt.adv_restassured;
 
+import io.restassured.response.Response;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Map;
 
 public class GetSpecificCommitCommentTests extends BaseApiTestSetup {
-    private static final String PATH = "/repos/{owner}/{repo}/comments/{comment_id}";
-    private static final String OWNER = "patrikturc";
-    private static final String REPO_NAME = "Tech261";
-    private static final int COMMENT_ID = 146184534;
+
+    private Response response;
 
     @Override
     protected String getPath() {
-        return PATH;
+        return "/repos/{owner}/{repo}/comments/{comment_id}";
     }
 
     @Override
     protected Map<String, Object> getPathParams() {
         return Map.of(
-                "owner", OWNER,
-                "repo", REPO_NAME,
-                "comment_id", COMMENT_ID
+                "owner", "patrikturc",
+                "repo", "Tech261",
+                "comment_id", 146184534
         );
+    }
+
+    @Override
+    protected String getHttpMethod() {
+        return "GET";
+    }
+
+    @Override
+    protected Object getRequestBody() {
+        return null;
+    }
+
+    @BeforeEach
+    public void setUp() {
+        response = makeRequest(getHttpMethod(), getPath(), getPathParams(), getRequestBody());
     }
 
     @Test
     @DisplayName("Get comment with a specific ID returns a comment with that ID")
     void getCommentWithId_ReturnsThatComment() {
         int returnedCommentId = response.jsonPath().getInt("id");
-        MatcherAssert.assertThat(returnedCommentId, Matchers.is(COMMENT_ID));
+        MatcherAssert.assertThat(returnedCommentId, Matchers.is(146184534));
     }
 
     @Test

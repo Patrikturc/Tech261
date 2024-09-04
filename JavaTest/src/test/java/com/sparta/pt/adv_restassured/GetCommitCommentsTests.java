@@ -1,28 +1,44 @@
 package com.sparta.pt.adv_restassured;
 
+import io.restassured.response.Response;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Map;
 
 public class GetCommitCommentsTests extends BaseApiTestSetup {
-    private static final String PATH = "/repos/{owner}/{repo}/comments";
-    private static final String OWNER = "patrikturc";
-    private static final String REPO_NAME = "Tech261";
+
+    private Response response;
 
     @Override
     protected String getPath() {
-        return PATH;
+        return "/repos/{owner}/{repo}/comments";
     }
 
     @Override
     protected Map<String, Object> getPathParams() {
         return Map.of(
-                "owner", OWNER,
-                "repo", REPO_NAME
+                "owner", "patrikturc",
+                "repo", "Tech261"
         );
+    }
+
+    @Override
+    protected String getHttpMethod() {
+        return "GET";
+    }
+
+    @Override
+    protected Object getRequestBody() {
+        return null;
+    }
+
+    @BeforeEach
+    public void setUp() {
+        response = makeRequest(getHttpMethod(), getPath(), getPathParams(), getRequestBody());
     }
 
     @Test
@@ -40,6 +56,6 @@ public class GetCommitCommentsTests extends BaseApiTestSetup {
     @Test
     @DisplayName("First comment has correct user name associated")
     void firstComment_HasCorrectUserNameAssociated() {
-        MatcherAssert.assertThat(response.jsonPath().getString("user.login[0]").toLowerCase(), Matchers.is(OWNER));
+        MatcherAssert.assertThat(response.jsonPath().getString("user.login[0]").toLowerCase(), Matchers.is("patrikturc"));
     }
 }
